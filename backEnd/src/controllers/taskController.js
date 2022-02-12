@@ -2,6 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 const {
   getTasksVerification,
   createTaskVerification,
+  updateTaskVerification,
 } = require('../services/taskService');
 
 const getTasks = async (_req, res, next) => {
@@ -27,7 +28,21 @@ const createTask = async (req, res, next) => {
   }
 };
 
+const updateTask = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const taskToUpdate = req.body;
+    const task = await updateTaskVerification(id, taskToUpdate);
+
+    return res.status(StatusCodes.OK).json(task);
+  } catch (error) {
+    console.log(`TASK UPDATE ${error.message}`);
+    return next(error)
+  }
+};
+
 module.exports = {
   getTasks,
   createTask,
+  updateTask,
 };

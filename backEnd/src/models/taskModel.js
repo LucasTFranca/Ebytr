@@ -25,8 +25,17 @@ const taskFindById = async (id) => {
   return task;
 };
 
+const taskUpdate = async (id, task) => {
+  const db = await connection();
+
+  const response = await db.collection('tasks').updateOne({ _id: ObjectId(id) }, { $set: task });
+
+  console.log(response);
+};
+
 module.exports = {
   getAllTaks,
   taskCreate,
   taskFindById,
+  taskUpdate,
 };
