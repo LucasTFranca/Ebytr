@@ -28,16 +28,13 @@ const taskFindById = async (id) => {
 const taskUpdate = async (id, task) => {
   const db = await connection();
 
-  const response = await db.collection('tasks').updateOne({ _id: ObjectId(id) }, { $set: task });
-
-  console.log(response);
+  await db.collection('tasks').updateOne({ _id: ObjectId(id) }, { $set: task });
 };
 
 const taskDelete = async (id) => {
   const db = await connection();
 
-  const response = await db.collection('tasks').deleteOne({ _id: ObjectId(id) });
-  console.log(response);
+  await db.collection('tasks').deleteOne({ _id: ObjectId(id) });
 };
 
 module.exports = {
