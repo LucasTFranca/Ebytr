@@ -33,9 +33,17 @@ const taskUpdate = async (id, task) => {
   console.log(response);
 };
 
+const taskDelete = async (id) => {
+  const db = await connection();
+
+  const response = await db.collection('tasks').deleteOne({ _id: ObjectId(id) });
+  console.log(response);
+};
+
 module.exports = {
   getAllTaks,
   taskCreate,
   taskFindById,
   taskUpdate,
+  taskDelete,
 };

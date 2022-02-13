@@ -3,6 +3,7 @@ const {
   getTasksVerification,
   createTaskVerification,
   updateTaskVerification,
+  deleteTaskVerification,
 } = require('../services/taskService');
 
 const getTasks = async (_req, res, next) => {
@@ -41,8 +42,21 @@ const updateTask = async (req, res, next) => {
   }
 };
 
+const deleteTask = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const task = await deleteTaskVerification(id);
+
+    return res.status(StatusCodes.OK).json(task);
+  } catch (error) {
+    console.log(`TASK DELETE ${error.message}`);
+    return next(error)
+  }
+};
+
 module.exports = {
   getTasks,
   createTask,
   updateTask,
+  deleteTask,
 };

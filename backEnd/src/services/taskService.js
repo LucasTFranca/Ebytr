@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
-const { getAllTaks, taskCreate, taskFindById, taskUpdate } = require("../models/taskModel");
+const { getAllTaks, taskCreate, taskFindById, taskUpdate, taskDelete } = require("../models/taskModel");
 const { taskSchema } = require("../schemas");
-const { taskNotFound } = require("../utils/dictionary/errorMessages");
+const { taskNotFound, idUndefined } = require("../utils/dictionary/errorMessages");
 const errorConstructor = require("../utils/functions/errorHandler");
 
 const getTasksVerification = async () => {
@@ -24,6 +24,8 @@ const updateTaskVerification = async (taskId, taskToUpdate) => {
   const { error } = taskSchema.validate(taskToUpdate);
   if (error) throw errorConstructor(StatusCodes.BAD_REQUEST, error.message);
 
+  if (!taskId) throw errorConstructor(StatusCodes.BAD_REQUEST, idUndefined);
+
   const taskToVirify = await taskFindById(taskId);
   if(!taskToVirify) throw errorConstructor(StatusCodes.NOT_FOUND, taskNotFound);
 
@@ -33,9 +35,21 @@ const updateTaskVerification = async (taskId, taskToUpdate) => {
 
   return task;
 };
- 
+
+const deleteTaskVerification = async (taskId) => {
+  if (!taskId) throw errorConstructor(StatusCodes.BAD_REQUEST, idUndefined);
+
+  const task = await taskFindById(taskId);
+  if(!task) throw errorConstructor(StatusCodes.NOT_FOUND, taskNotFound);
+
+  await taskDelete(taskId);
+
+  return task;
+};
+
 module.exports = {
   getTasksVerification,
   createTaskVerification,
   updateTaskVerification,
+  deleteTaskVerification,
 };
