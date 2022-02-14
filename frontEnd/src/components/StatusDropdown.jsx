@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import TaskContext from '../context/TaskContext';
+import { updateTask } from '../helpers';
 
-function StatusDropdown({ status } = '') {
-  const [statusValue, setstatusValue] = useState(status);
+function StatusDropdown({ status, id }) {
+  const { tasksReload } = useContext(TaskContext);
 
   async function handleChange({ target }) {
     const { value } = target;
-    setstatusValue(value);
+    await updateTask(id, { status: value });
+
+    tasksReload();
   }
 
   return (
-    <select onChange={handleChange} value={statusValue}>
+    <select onChange={handleChange} value={status}>
       <option value="pendente">pendente</option>
       <option value="andamento">em andamento</option>
       <option value="pronto">pronto</option>

@@ -6,4 +6,16 @@ const getAllTaks = async () => {
   return data;
 };
 
-export default getAllTaks;
+const updateTask = async (id, data) => {
+  await axios.put(`http://localhost:4000/task/${id}`, data);
+};
+
+const deleteTask = async (id) => {
+  await axios.delete(`http://localhost:4000/task/${id}`);
+};
+
+export {
+  getAllTaks,
+  updateTask,
+  deleteTask,
+};

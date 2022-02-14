@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import TaskContext from './TaskContext';
-import getAllTaks from '../helpers';
+import { getAllTaks } from '../helpers';
 
 const INITIAL_STATE = [];
 
@@ -17,12 +17,12 @@ function TaskProvider({ children }) {
     taskRequisition();
   }, []);
 
-  async function updateTasks() {
+  async function tasksReload() {
     const data = await getAllTaks();
     setTasks(data);
   }
 
-  const state = useMemo(() => ({ tasks, updateTasks }), [tasks]);
+  const state = useMemo(() => ({ tasks, tasksReload }), [tasks]);
 
   return (
     <TaskContext.Provider value={state}>

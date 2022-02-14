@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+input:disabled {
+  color: rgb(0, 0, 0);
+}
+
+input:focus {
+  outline: none;
+}
