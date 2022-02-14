@@ -1,6 +1,6 @@
 const { StatusCodes } = require("http-status-codes");
 const { getAllTaks, taskCreate, taskFindById, taskUpdate, taskDelete } = require("../models/taskModel");
-const { taskSchema } = require("../schemas");
+const { taskSchema, updateTaskSchema } = require("../schemas");
 const { taskNotFound, idUndefined } = require("../utils/dictionary/errorMessages");
 const errorConstructor = require("../utils/functions/errorHandler");
 
@@ -21,7 +21,7 @@ const createTaskVerification = async (newTask) => {
 };
 
 const updateTaskVerification = async (taskId, taskToUpdate) => {
-  const { error } = taskSchema.validate(taskToUpdate);
+  const { error } = updateTaskSchema.validate(taskToUpdate);
   if (error) throw errorConstructor(StatusCodes.BAD_REQUEST, error.message);
 
   if (!taskId) throw errorConstructor(StatusCodes.BAD_REQUEST, idUndefined);

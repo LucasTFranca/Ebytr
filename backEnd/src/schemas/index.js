@@ -5,6 +5,12 @@ const taskSchema = Joi.object({
   status: Joi.string().required(),
 });
 
+const updateTaskSchema = Joi.object({
+  context: Joi.string(),
+  status: Joi.string(),
+}).or('context', 'status');
+
 module.exports = {
   taskSchema,
+  updateTaskSchema,
 };
