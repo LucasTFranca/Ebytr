@@ -6,7 +6,7 @@ function TaskList() {
   const { tasks } = useContext(TaskContext);
 
   return (
-    <ul style={{ listStyleType: 'none' }}>
+    <ul>
       { tasks.map((task) => <TaskLi key={task.context} task={task} />) }
     </ul>
   );
