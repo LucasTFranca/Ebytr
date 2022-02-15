@@ -12,11 +12,14 @@ function SortDropdown() {
   }
 
   return (
-    <select value={sortValue} onChange={handleChange}>
-      <option value="alfabetica">alfabética</option>
-      <option value="criacao">data de criação</option>
-      <option value="status">status</option>
-    </select>
+    <label htmlFor="sortSelect">
+      Sort by
+      <select id="sortSelect" value={sortValue} onChange={handleChange}>
+        <option value="alfabetica">alfabética</option>
+        <option value="criacao">data de criação</option>
+        <option value="status">status</option>
+      </select>
+    </label>
   );
 }
 
