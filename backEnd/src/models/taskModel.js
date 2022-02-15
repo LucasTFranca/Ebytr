@@ -12,7 +12,7 @@ const getAllTaks = async () => {
 const taskCreate = async (newTask) => {
   const db = await connection();
 
-  const { insertedId } = await db.collection('tasks').insertOne(newTask);
+  const { insertedId } = await db.collection('tasks').insertOne({ ...newTask, createdDate: new Date() });
 
   return insertedId;
 };
