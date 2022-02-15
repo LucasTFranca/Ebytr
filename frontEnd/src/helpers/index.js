@@ -1,21 +1,23 @@
 import axios from 'axios';
 
+const baseUrl = 'http://localhost:4000';
+
 const getAllTaks = async () => {
-  const { data } = await axios.get('http://localhost:4000/task');
+  const { data } = await axios.get(`${baseUrl}/task`);
 
   return data;
 };
 
 const updateTask = async (id, data) => {
-  await axios.put(`http://localhost:4000/task/${id}`, data);
+  await axios.put(`${baseUrl}/task/${id}`, data);
 };
 
 const deleteTask = async (id) => {
-  await axios.delete(`http://localhost:4000/task/${id}`);
+  await axios.delete(`${baseUrl}/task/${id}`);
 };
 
 const createTask = async (data) => {
-  await axios.post('http://localhost:4000/task/', data);
+  await axios.post(`${baseUrl}/task/`, data);
 };
 
 export {

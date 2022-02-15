@@ -16,19 +16,19 @@ function TaskProvider({ children }) {
       return 0;
     }
 
-    const objectValidatorWhatSortToUse = {
-      alfabetica: () => {
-        data.sort((a, b) => handleSort(a, b, 'context'));
-      },
-      criacao: () => {
-        data.sort((a, b) => handleSort(a, b, 'createdDate'));
-      },
-      status: () => {
-        data.sort((a, b) => handleSort(a, b, 'status'));
-      },
+    const sortDictionary = {
+      alfabetica: 'context',
+      criacao: 'createdDate',
+      status: 'status',
     };
 
-    objectValidatorWhatSortToUse[sortMethod]();
+    data.sort((a, b) => handleSort(a, b, sortDictionary[sortMethod]));
+  }
+
+  async function tasksReload() {
+    const data = await getAllTaks();
+    sortApplier(data);
+    setTasks(data);
   }
 
   useEffect(() => {
@@ -40,12 +40,6 @@ function TaskProvider({ children }) {
 
     taskRequisition();
   }, []);
-
-  async function tasksReload() {
-    const data = await getAllTaks();
-    sortApplier(data);
-    setTasks(data);
-  }
 
   useEffect(() => {
     if (tasks.length >= 1) tasksReload();
