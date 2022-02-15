@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import TaskContext from '../context/TaskContext';
+import { createTask } from '../helpers';
 
 function TaskInput() {
-  const [TaskInputValue, setTaskInputValue] = useState('');
+  const [taskInputValue, setTaskInputValue] = useState('');
+  const { tasksReload } = useContext(TaskContext);
 
   function handleChange({ target }) {
     const { value } = target;
     setTaskInputValue(value);
+  }
+
+  async function sendTaskToCreate() {
+    await createTask({ context: taskInputValue, status: 'pendente' });
+    tasksReload();
+  }
+
+  function verifyToSend({ key }) {
+    if (key === 'Enter') sendTaskToCreate();
   }
 
   return (
@@ -13,9 +25,15 @@ function TaskInput() {
       <input
         type="text"
         onChange={handleChange}
-        value={TaskInputValue}
+        value={taskInputValue}
+        onKeyPress={verifyToSend}
       />
-      <button type="button">add Task</button>
+      <button
+        onClick={sendTaskToCreate}
+        type="button"
+      >
+        add Task
+      </button>
     </div>
   );
 }
