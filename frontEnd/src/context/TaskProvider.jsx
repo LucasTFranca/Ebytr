@@ -10,25 +10,24 @@ function TaskProvider({ children }) {
   const [sortMethod, setSortMethod] = useState('alfabetica');
 
   function sortApplier(data) {
+    function handleSort(a, b, key) {
+      if (a[key] < b[key]) return -1;
+      if (a[key] > b[key]) return 1;
+      return 0;
+    }
+
     const objectValidatorWhatSortToUse = {
       alfabetica: () => {
-        data.sort((a, b) => {
-          if (a.context < b.context) return -1;
-          if (a.context > b.context) return 1;
-          return 0;
-        });
+        data.sort((a, b) => handleSort(a, b, 'context'));
       },
       criacao: () => {
-
+        data.sort((a, b) => handleSort(a, b, 'createdDate'));
       },
       status: () => {
-        data.sort((a, b) => {
-          if (a.status < b.status) return -1;
-          if (a.status > b.status) return 1;
-          return 0;
-        });
+        data.sort((a, b) => handleSort(a, b, 'status'));
       },
     };
+
     objectValidatorWhatSortToUse[sortMethod]();
   }
 
