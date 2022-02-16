@@ -26,6 +26,8 @@ const updateTaskVerification = async (taskId, taskToUpdate) => {
   const { error } = updateTaskSchema.validate(taskToUpdate);
   if (error) throw errorConstructor(StatusCodes.BAD_REQUEST, error.message);
 
+  if (taskId.length < 24) throw errorConstructor(StatusCodes.BAD_REQUEST, wrongIdFormat);
+
   if (!taskId) throw errorConstructor(StatusCodes.BAD_REQUEST, idUndefined);
 
   const taskToVirify = await taskFindById(taskId);
