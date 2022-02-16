@@ -3,7 +3,7 @@ const {
   getAllTaks, taskCreate, taskFindById, taskUpdate, taskDelete,
 } = require('../models/taskModel');
 const { taskSchema, updateTaskSchema } = require('../schemas');
-const { taskNotFound, idUndefined } = require('../utils/dictionary/errorMessages');
+const { taskNotFound, idUndefined, wrongIdFormat } = require('../utils/dictionary/errorMessages');
 const errorConstructor = require('../utils/functions/errorHandler');
 
 const getTasksVerification = async () => {
@@ -40,6 +40,8 @@ const updateTaskVerification = async (taskId, taskToUpdate) => {
 
 const deleteTaskVerification = async (taskId) => {
   if (!taskId) throw errorConstructor(StatusCodes.BAD_REQUEST, idUndefined);
+
+  if (taskId.length < 24) throw errorConstructor(StatusCodes.BAD_REQUEST, wrongIdFormat);
 
   const task = await taskFindById(taskId);
   if (!task) throw errorConstructor(StatusCodes.NOT_FOUND, taskNotFound);
