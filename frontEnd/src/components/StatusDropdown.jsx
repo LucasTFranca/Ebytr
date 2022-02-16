@@ -14,7 +14,7 @@ function StatusDropdown({ status, id }) {
   }
 
   return (
-    <select onChange={handleChange} value={status}>
+    <select className="statusSelect" onChange={handleChange} value={status}>
       <option value="pendente">pendente</option>
       <option value="andamento">em andamento</option>
       <option value="pronto">pronto</option>

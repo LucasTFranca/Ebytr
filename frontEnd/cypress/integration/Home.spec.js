@@ -15,4 +15,12 @@ describe('TaskInput testing', () => {
     cy.get('input').should('have.value', 'task');
     cy.get('#taskCreateInput').should('have.value', '');
   });
+
+  it('Testa se a pagina renderiza o component TaskList', () => {
+    cy.visit('/');
+    cy.get('.taskInput').should('exist');
+    cy.get('.statusSelect').should('exist');
+    cy.get('.editButton').should('exist');
+    cy.get('.deleteButton').should('exist');
+  });
 });

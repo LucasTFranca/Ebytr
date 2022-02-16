@@ -37,10 +37,7 @@ function TaskLi({ task }) {
   return (
     <li>
       <input
-        style={{
-          border: 'none',
-          textDecoration: 'none',
-        }}
+        className="taskInput"
         ref={inputRef}
         type="text"
         value={inputTaskContext}
@@ -49,8 +46,8 @@ function TaskLi({ task }) {
         onChange={handleChange}
       />
       <StatusDropdown status={task.status} id={id} />
-      <button onClick={inputUnlock} type="button">edit</button>
-      <button onClick={handleDelete} type="button">x</button>
+      <button className="editButton" onClick={inputUnlock} type="button">edit</button>
+      <button className="deleteButton" onClick={handleDelete} type="button">x</button>
     </li>
   );
 }
