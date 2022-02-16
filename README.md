@@ -26,7 +26,7 @@ mesmo excluí-la.
 Primeiro clone o repositorio utilizando o comando abaixo:
 
 ```bash
-git@github.com:dev-lucasteixeira/Ebytr.git
+git clone git@github.com:dev-lucasteixeira/Ebytr.git
 cd Ebytr/frontEnd
 ```
 
