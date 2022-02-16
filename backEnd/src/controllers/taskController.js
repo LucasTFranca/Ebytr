@@ -13,7 +13,7 @@ const getTasks = async (_req, res, next) => {
     return res.status(StatusCodes.OK).json(tasks);
   } catch (error) {
     console.log(`TASK GET ${error.message}`);
-    return next(error)
+    return next(error);
   }
 };
 
@@ -25,7 +25,7 @@ const createTask = async (req, res, next) => {
     return res.status(StatusCodes.CREATED).json(task);
   } catch (error) {
     console.log(`TASK POST ${error.message}`);
-    return next(error)
+    return next(error);
   }
 };
 
@@ -38,7 +38,7 @@ const updateTask = async (req, res, next) => {
     return res.status(StatusCodes.OK).json(task);
   } catch (error) {
     console.log(`TASK UPDATE ${error.message}`);
-    return next(error)
+    return next(error);
   }
 };
 
@@ -50,7 +50,7 @@ const deleteTask = async (req, res, next) => {
     return res.status(StatusCodes.OK).json(task);
   } catch (error) {
     console.log(`TASK DELETE ${error.message}`);
-    return next(error)
+    return next(error);
   }
 };
 
