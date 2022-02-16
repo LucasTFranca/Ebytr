@@ -14,6 +14,7 @@ function TaskInput() {
 
   async function sendTaskToCreate() {
     await createTask({ context: taskInputValue, status: 'pendente' });
+    setTaskInputValue('');
     tasksReload();
   }
 
