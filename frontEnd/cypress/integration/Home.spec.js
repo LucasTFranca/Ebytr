@@ -12,7 +12,7 @@ describe('Home testing', () => {
     cy.get('#taskCreateInput').clear();
     cy.get('#taskCreateInput').type('task test');
     cy.get('#addTaskButton').click();
-    cy.get('input').should('have.value', 'task test');
+    cy.get('.taskInput').should('have.value', 'task test');
     cy.get('#taskCreateInput').should('have.value', '');
   });
 
