@@ -12,7 +12,7 @@ function SortDropdown() {
   }
 
   return (
-    <label htmlFor="sortSelect">
+    <label id="sortLabel" htmlFor="sortSelect">
       Sort by
       <select id="sortSelect" value={sortValue} onChange={handleChange}>
         <option value="alfabetica">alfabética</option>

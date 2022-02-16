@@ -25,12 +25,14 @@ function TaskInput() {
     <div>
       <SortDropdown />
       <input
+        id="taskCreateInput"
         type="text"
         onChange={handleChange}
         value={taskInputValue}
         onKeyPress={verifyToSend}
       />
       <button
+        id="addTaskButton"
         onClick={sendTaskToCreate}
         type="button"
       >
