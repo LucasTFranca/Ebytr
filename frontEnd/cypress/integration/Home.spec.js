@@ -1,4 +1,4 @@
-describe('TaskInput testing', () => {
+describe('Home testing', () => {
   it('Testa se a pagina renderiza o component TaskInput', () => {
     cy.visit('/');
     cy.get('#taskCreateInput').should('exist');
@@ -10,9 +10,9 @@ describe('TaskInput testing', () => {
   it('testa se é possivel criar uma task', () => {
     cy.visit('/');
     cy.get('#taskCreateInput').clear();
-    cy.get('#taskCreateInput').type('task');
+    cy.get('#taskCreateInput').type('task test');
     cy.get('#addTaskButton').click();
-    cy.get('input').should('have.value', 'task');
+    cy.get('input').should('have.value', 'task test');
     cy.get('#taskCreateInput').should('have.value', '');
   });
 
