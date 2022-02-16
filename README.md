@@ -38,7 +38,7 @@ npm install
 
 ## Como Utilizar
 
-Para utilizar o projeto primeiro precisamos instalar as dependencias e inicar o [servidor](#Ebytr-BackEnd).
+Para utilizar o projeto primeiro precisamos instalar as dependencias e inicar o [servidor](#BackEnd).
 
 Depois de inciar o servidor utilize o comando abaixo para iniciar a aplicação:
 
