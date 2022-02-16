@@ -71,6 +71,7 @@ por todas tarefas existentes.
 ## Requisitos
 
 - Node js
+- MongoDb
 - Npm
 
 ## Tecnologias Utilizadas
