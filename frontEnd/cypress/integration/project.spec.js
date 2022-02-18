@@ -5,7 +5,6 @@ describe('TaskList', () => {
 
   it('Testa se a pagina renderiza o component TaskInput', () => {
     cy.get('#taskCreateInput').should('exist');
-    cy.get('#sortLabel').should('exist');
     cy.get('#sortSelect').should('exist');
     cy.get('#addTaskButton').should('exist');
   });
@@ -21,8 +20,8 @@ describe('TaskList', () => {
   it('Testa se a pagina renderiza o component TaskList', () => {
     cy.get('.taskInput').should('exist');
     cy.get('.statusSelect').should('exist');
-    cy.get('.editButton').should('exist');
-    cy.get('.deleteButton').should('exist');
+    cy.get(':nth-child(1) > [aria-label="edit"] > [data-testid="ModeEditOutlineOutlinedIcon"] > path').should('exist');
+    cy.get(':nth-child(1) > .editButton > [data-testid="DeleteIcon"] > path').should('exist');
   });
 
   it('Testa se é possivel atualizar o status', () => {
@@ -35,14 +34,14 @@ describe('TaskList', () => {
   });
 
   it('Testa se é possivel atualizar a task', () => {
-    cy.get(':nth-child(1) > .editButton').click();
+    cy.get(':nth-child(1) > [aria-label="edit"] > [data-testid="ModeEditOutlineOutlinedIcon"] > path').click();
     cy.get(':nth-child(1) > .taskInput').clear();
     cy.get(':nth-child(1) > .taskInput').type('task rubinho atualizada{enter}');
     cy.get('.taskInput').should('have.value', 'task rubinho atualizada');
   });
 
   it('Testa se é possivel deletar a task', () => {
-    cy.get(':nth-child(1) > .deleteButton').click();
+    cy.get(':nth-child(1) > .editButton > [data-testid="DeleteIcon"] > path').click();
     cy.get('.taskInput').should('not.exist');
   });
 });
@@ -52,10 +51,8 @@ describe('TaskInput', () => {
     cy.visit('/');
   });
 
-
   it('Testa se a pagina renderiza o component TaskInput', () => {
     cy.get('#taskCreateInput').should('exist');
-    cy.get('#sortLabel').should('exist');
     cy.get('#sortSelect').should('exist');
     cy.get('#addTaskButton').should('exist');
   });
@@ -94,7 +91,6 @@ describe('Home', () => {
 
   it('Testa se a pagina renderiza o component TaskInput', () => {
     cy.get('#taskCreateInput').should('exist');
-    cy.get('#sortLabel').should('exist');
     cy.get('#sortSelect').should('exist');
     cy.get('#addTaskButton').should('exist');
   });
@@ -102,7 +98,7 @@ describe('Home', () => {
   it('Testa se a pagina renderiza o component TaskList', () => {
     cy.get('.taskInput').should('exist');
     cy.get('.statusSelect').should('exist');
-    cy.get('.editButton').should('exist');
-    cy.get('.deleteButton').should('exist');
+    cy.get(':nth-child(1) > [aria-label="edit"] > [data-testid="ModeEditOutlineOutlinedIcon"] > path').should('exist');
+    cy.get(':nth-child(1) > .editButton > [data-testid="DeleteIcon"] > path').should('exist');
   });
 });

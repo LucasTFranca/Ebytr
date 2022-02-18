@@ -5,11 +5,13 @@ import TaskProvider from './context/TaskProvider';
 
 function App() {
   return (
-    <TaskProvider>
-      <Switch>
-        <Route exat path="/" component={Home} />
-      </Switch>
-    </TaskProvider>
+    <div className="app">
+      <TaskProvider>
+        <Switch>
+          <Route exat path="/" component={Home} />
+        </Switch>
+      </TaskProvider>
+    </div>
   );
 }
 

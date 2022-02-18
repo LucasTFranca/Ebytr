@@ -7,15 +7,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #3b6df9;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-div {
-  text-align: center;
 }
 
 input:disabled {
@@ -31,7 +28,118 @@ ul {
   padding: 0;
 }
 
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TaskList */
+
+#ulTaskList {
+  width: 100%;
+  margin-bottom: 4vh;
+}
+
+#ulTaskList li {
+  border: 1px solid black;
+  border-radius: 8px;
+  background: white;
+  margin-top: 30px;
+  margin-left: 4vh;
+  margin-right: 4vh;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+}
+
+.statusSelect {
+  height: 40px;
+  width: 15%;
+  outline: none;
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  font: inherit;
+  cursor: pointer;
+  color: #212121;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+}
+
+.statusSelect:hover {
+  border-color:rgb(0, 0, 0);
+}
+
+.editButton {
+  margin-right: 0.4%;
+  margin-left: 0.4%;
+}
+
+.deleteButton {
+  margin-right: 0.4%;
+}
+
 .taskInput {
+  font-size: 15px;
+  width: 70%;
+  height: 40px;
+  padding-left: 10px;
+  margin-right: 0.2%;
+  margin-left: 2%;
   border: none;
   text-decoration: none;
+}
+
+/* TaskInput */
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+#sortSelect {
+  height: 42px;
+  width: 18%;
+  outline: none;
+  margin: 0;
+  text-align: center;
+  color: white;
+  background: #141825;
+  border: 2px solid #1976d2;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#taskCreateInput {
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+  margin-left: 2vh;
+  margin-right: 0;
+  padding-left: 2vh;
+  width: 70%;
+  height: 36px;
+  background: #141825;
+  border: 2px solid #1976d2;
+  border-right: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 2vh;
+  margin-top: 2vh;
 }

@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { IconButton } from '@mui/material';
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import DeleteIcon from '@mui/icons-material/Delete';
 import StatusDropdown from './StatusDropdown';
 import { deleteTask, updateTask } from '../helpers';
 import TaskContext from '../context/TaskContext';
@@ -45,9 +49,13 @@ function TaskLi({ task }) {
         onKeyPress={sendEditedTaskToBackEnd}
         onChange={handleChange}
       />
-      <StatusDropdown status={task.status} id={id} />
-      <button className="editButton" onClick={inputUnlock} type="button">edit</button>
-      <button className="deleteButton" onClick={handleDelete} type="button">x</button>
+      <StatusDropdown className="deleteButton" status={task.status} id={id} />
+      <IconButton onClick={inputUnlock} aria-label="edit" size="large">
+        <ModeEditOutlineOutlinedIcon />
+      </IconButton>
+      <IconButton className="editButton" onClick={handleDelete} aria-label="delete" size="large">
+        <DeleteIcon />
+      </IconButton>
     </li>
   );
 }

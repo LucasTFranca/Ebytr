@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useContext, useState } from 'react';
+import { Button } from '@mui/material/';
 import TaskContext from '../context/TaskContext';
 import { createTask } from '../helpers';
 import SortDropdown from './SortDropdown';
@@ -23,7 +25,7 @@ function TaskInput() {
   }
 
   return (
-    <div>
+    <div className="container">
       <SortDropdown />
       <input
         id="taskCreateInput"
@@ -32,13 +34,26 @@ function TaskInput() {
         value={taskInputValue}
         onKeyPress={verifyToSend}
       />
-      <button
+      <Button
+        sx={{
+          fontSize: '13px',
+          textTransform: 'none',
+          padding: '0',
+          marginTop: '0px',
+          marginLeft: '0px',
+          height: '42px',
+          borderLeft: '0px',
+          borderTopLeftRadius: '0px',
+          borderBottomLeftRadius: '0px',
+          width: '10vh',
+        }}
         id="addTaskButton"
         onClick={sendTaskToCreate}
-        type="button"
+        variant="contained"
+        size="large"
       >
         add Task
-      </button>
+      </Button>
     </div>
   );
 }
